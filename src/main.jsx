@@ -124,12 +124,18 @@ function Button({ children, href, to, kind = "primary" }) {
 function Heading({ eyebrow, title, copy }) {
   return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</div>;
 }
+function Brand({ footer = false, onClick }) {
+  return <Link to="/" className={`brand${footer ? " brand-footer" : ""}`} onClick={onClick} aria-label="Boostech home">
+    <img className="brand-mark" src="/boostech-mark.svg" alt="" width="38" height="38" />
+    <span className="brand-word">Boos<em>tech</em></span>
+  </Link>;
+}
 
 function Header() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   return <header className="site-header"><div className="header-inner">
-    <Link to="/" className="brand" onClick={close}><span className="brand-symbol">b.</span><span>boostech<span className="brand-dot">.</span></span></Link>
+    <Brand onClick={close} />
     <nav className={`nav-links ${open ? "nav-open" : ""}`}>
       <a href="/#services" onClick={close}>Services</a><a href="/#packages" onClick={close}>Packages</a><a href="/#work" onClick={close}>Our work</a><a href="/#skills" onClick={close}>Skills</a><Link to="/contact/" onClick={close}>Contact</Link>
       <a className="nav-mobile-cta" href={wa("Hi boostech, I want to know about your packages.")} onClick={close}>Discuss a package <ArrowUpRight size={15} /></a>
@@ -257,7 +263,7 @@ function ContactCTA() {
 
 function Footer() {
   return <footer className="site-footer"><div className="container"><div className="footer-main">
-    <div className="footer-brand"><Link to="/" className="brand brand-footer"><span className="brand-symbol">b.</span><span>boostech<span className="brand-dot">.</span></span></Link><p>Digital marketing and web development for businesses ready to be seen, understood and chosen.</p><div className="footer-social"><a href="https://www.instagram.com/" aria-label="Instagram"><Instagram /></a><a href="https://www.facebook.com/" aria-label="Facebook"><Facebook /></a><a href="https://www.linkedin.com/" aria-label="LinkedIn"><Linkedin /></a></div></div>
+    <div className="footer-brand"><Brand footer /><p>Digital marketing and web development for businesses ready to be seen, understood and chosen.</p><div className="footer-social"><a href="https://www.instagram.com/" aria-label="Instagram"><Instagram /></a><a href="https://www.facebook.com/" aria-label="Facebook"><Facebook /></a><a href="https://www.linkedin.com/" aria-label="LinkedIn"><Linkedin /></a></div></div>
     <div className="footer-column"><b>EXPLORE</b><a href="/#services">Services</a><a href="/#packages">Packages</a><a href="/#work">Projects</a><a href="/#skills">Skills</a></div>
     <div className="footer-column"><b>SERVICES</b><Link to="/services/website-design/">Web development</Link><Link to="/services/seo/">SEO & local SEO</Link><Link to="/services/google-meta-ads/">Paid advertising</Link><Link to="/services/social-media-marketing/">Social media</Link></div>
     <div className="footer-column footer-contact"><b>CONTACT</b><a href={`mailto:${EMAIL}`}><Mail size={15} />{EMAIL}</a><a href={`tel:${PHONE.replace(/\s/g, "")}`}><Phone size={15} />{PHONE}</a><span><MapPin size={15} />Shyampur, Rishikesh, Uttarakhand</span><a href={REVIEW_URL} target="_blank" rel="noreferrer"><Star size={15} />Google review page</a></div>
