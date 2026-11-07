@@ -136,11 +136,11 @@ function Header() {
   const close = () => setOpen(false);
   return <header className="site-header"><div className="header-inner">
     <Brand onClick={close} />
-    <nav className={`nav-links ${open ? "nav-open" : ""}`}>
+    <nav id="primary-navigation" className={`nav-links ${open ? "nav-open" : ""}`} aria-label="Primary navigation">
       <a href="/#services" onClick={close}>Services</a><a href="/#packages" onClick={close}>Packages</a><a href="/#work" onClick={close}>Our work</a><a href="/#skills" onClick={close}>Skills</a><Link to="/contact/" onClick={close}>Contact</Link>
       <a className="nav-mobile-cta" href={wa("Hi boostech, I want to know about your packages.")} onClick={close}>Discuss a package <ArrowUpRight size={15} /></a>
     </nav>
-    <div className="header-actions"><a className="nav-cta" href={wa()}>Let's talk <ArrowUpRight size={16} /></a><button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button></div>
+    <div className="header-actions"><a className="nav-cta" href={wa()}>Let's talk <ArrowUpRight size={16} /></a><button className="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded={open} onClick={() => setOpen(!open)} aria-label={open ? "Close navigation menu" : "Open navigation menu"}>{open ? <X /> : <Menu />}</button></div>
   </div></header>;
 }
 
