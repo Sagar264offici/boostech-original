@@ -77,6 +77,20 @@ export default function MarketingFeature() {
           />
           <div className="mg-ring" />
           <motion.div
+            className="mg-ring alt2"
+            animate={reduce ? {} : { rotate: -360 }}
+            transition={{ duration: 46, repeat: Infinity, ease: "linear" }}
+          >
+            <span className="mg-orbiter" />
+          </motion.div>
+          <motion.div
+            className="mg-ring alt3"
+            animate={reduce ? {} : { rotate: 360 }}
+            transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
+          >
+            <span className="mg-orbiter" />
+          </motion.div>
+          <motion.div
             className="mg-disc"
             animate={reduce ? {} : { y: [0, -12, 0], rotate: [0, 4, 0] }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
