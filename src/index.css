@@ -747,10 +747,69 @@ p {
   width: 72%;
   aspect-ratio: 1;
   border-radius: 50%;
+  position: relative;
+  z-index: 2;
   background:
     radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95), transparent 36%),
     radial-gradient(circle at 62% 70%, #c9f24d 0%, #b7e33a 38%, #6d8a1f 72%, #2c3418 100%);
   box-shadow: inset -20px -24px 60px rgba(12, 14, 11, 0.35), 0 40px 80px -40px rgba(12, 14, 11, 0.5);
+}
+
+.hero-fallback-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 118%;
+  aspect-ratio: 1;
+  margin: -59% 0 0 -59%;
+  border-radius: 50%;
+  border: 1px solid rgba(12, 14, 11, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(201, 242, 77, 0.6);
+  transform: rotateX(70deg) rotateZ(-20deg);
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 18px 40px -28px rgba(12, 14, 11, 0.5);
+}
+
+.hero-fallback-ring.r2 {
+  width: 92%;
+  margin: -46% 0 0 -46%;
+  border-style: dashed;
+  border-color: rgba(12, 14, 11, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.6);
+  transform: rotateX(58deg) rotateZ(32deg);
+}
+
+.hero-fallback-orbiter-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 118%;
+  aspect-ratio: 1;
+  margin: -59% 0 0 -59%;
+  transform: rotateX(70deg) rotateZ(-20deg);
+  animation: hero-fallback-orbit 7s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-fallback-orbiter {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 14px var(--lime), 0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes hero-fallback-orbit {
+  to {
+    transform: rotateX(70deg) rotateZ(-20deg) rotate(360deg);
+  }
 }
 
 .hero-chip {

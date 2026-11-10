@@ -152,6 +152,11 @@ export default function Hero() {
               </div>
             ) : (
               <div className="hero-fallback" aria-hidden="true">
+                <div className="hero-fallback-ring r1" />
+                <div className="hero-fallback-ring r2" />
+                <div className="hero-fallback-orbiter-wrap">
+                  <span className="hero-fallback-orbiter" />
+                </div>
                 <div className="hero-fallback-art" />
               </div>
             )}
