@@ -24,8 +24,8 @@ export default function Process() {
         </div>
 
         <div className="process-steps">
-          {processSteps.map((step) => (
-            <Reveal key={step.no}>
+          {processSteps.map((step, index) => (
+            <Reveal key={step.no} delay={index * 0.07}>
               <div className="step">
                 <span className="step-no">{step.no}</span>
                 <div>

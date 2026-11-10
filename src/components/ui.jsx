@@ -17,6 +17,20 @@ export const stagger = {
   visible: { transition: { staggerChildren: 0.075 } },
 };
 
+const headStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.02 } },
+};
+
+const headItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function Reveal({ children, className = "", delay = 0 }) {
   const reduce = useReducedMotion();
   return (
@@ -34,15 +48,27 @@ export function Reveal({ children, className = "", delay = 0 }) {
 }
 
 export function SectionHead({ eyebrow, title, copy, actions }) {
+  const reduce = useReducedMotion();
+
   return (
-    <div className="section-head">
-      <div>
+    <motion.div
+      className="section-head"
+      variants={headStagger}
+      initial={reduce ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
+    >
+      <motion.div variants={headItem}>
         <span className="eyebrow">{eyebrow}</span>
         <h2 className="section-title">{title}</h2>
         {actions}
-      </div>
-      {copy && <p className="section-copy">{copy}</p>}
-    </div>
+      </motion.div>
+      {copy && (
+        <motion.p className="section-copy" variants={headItem}>
+          {copy}
+        </motion.p>
+      )}
+    </motion.div>
   );
 }
 

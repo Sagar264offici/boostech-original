@@ -1,9 +1,12 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Code2 } from "lucide-react";
 import { skills } from "../../data/site";
 import { Reveal } from "../ui";
 
 export default function Stack() {
+  const reduce = useReducedMotion();
+
   return (
     <section className="stack" id="skills">
       <div className="container stack-layout">
@@ -23,10 +26,21 @@ export default function Stack() {
 
         <Reveal delay={0.1}>
           <div className="stack-flow">
-            {skills.map((skill) => (
-              <span className="stack-chip" key={skill}>
+            {skills.map((skill, index) => (
+              <motion.span
+                className="stack-chip"
+                key={skill}
+                initial={reduce ? false : { opacity: 0, scale: 0.88, y: 10 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4, margin: "0px 0px -20px 0px" }}
+                transition={{
+                  duration: 0.45,
+                  delay: index * 0.03,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 {skill}
-              </span>
+              </motion.span>
             ))}
           </div>
           <div className="stack-foot">

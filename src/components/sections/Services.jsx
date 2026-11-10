@@ -10,7 +10,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { services } from "../../data/site";
-import { SectionHead } from "../ui";
+import { Reveal, SectionHead } from "../ui";
 
 const icons = {
   monitor: Monitor,
@@ -38,33 +38,35 @@ export default function Services() {
         />
 
         <div className="service-list">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = icons[service.icon] || Monitor;
             return (
-              <Link className="service-row" to={service.path} key={service.no}>
-                <span className="service-index">{service.no}</span>
+              <Reveal key={service.no} delay={index * 0.05}>
+                <Link className="service-row" to={service.path}>
+                  <span className="service-index">{service.no}</span>
 
-                <div className="service-main">
-                  <h3 className="service-title">
-                    <Icon size={20} strokeWidth={1.6} />
-                    {service.title}
-                    {service.featured && (
-                      <span className="service-tag-featured">Core focus</span>
-                    )}
-                  </h3>
-                  <p className="service-copy">{service.copy}</p>
-                </div>
+                  <div className="service-main">
+                    <h3 className="service-title">
+                      <Icon size={20} strokeWidth={1.6} />
+                      {service.title}
+                      {service.featured && (
+                        <span className="service-tag-featured">Core focus</span>
+                      )}
+                    </h3>
+                    <p className="service-copy">{service.copy}</p>
+                  </div>
 
-                <div className="service-tags">
-                  {service.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
+                  <div className="service-tags">
+                    {service.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
 
-                <span className="service-arrow" aria-hidden="true">
-                  <ArrowUpRight size={18} />
-                </span>
-              </Link>
+                  <span className="service-arrow" aria-hidden="true">
+                    <ArrowUpRight size={18} />
+                  </span>
+                </Link>
+              </Reveal>
             );
           })}
         </div>
