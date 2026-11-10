@@ -43,12 +43,12 @@ The included `vercel.json` rewrites the app routes to the Vite entry point.
 
 - Business email: `singhvikas2000a@gmail.com`
 - Business phone: `+91 91930 98235`
-- WhatsApp number used by the enquiry CTAs: `+91 87559 03705`
+- WhatsApp number used by the enquiry CTAs: `+91 91930 98235`
 - Google review URL: `https://g.page/r/CTduq35iFXocEBI/review`
 
-Update these constants at the top of `src/main.jsx` if the contact details change.
+Update these constants in `src/data/site.js` if the contact details change.
 
-The project uses your supplied demo/portfolio URLs. Project preview iframes are loaded only when a visitor clicks **Load preview**, to avoid loading all external sites immediately.
+The project uses your supplied demo/portfolio URLs. Project cards load the live front page lazily as they scroll into view, and **Live preview** opens the full site in a modal.
 # Boostech
 # Boostech
 # boostech-original

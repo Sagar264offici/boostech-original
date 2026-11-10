@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://business-flow-studio.vercel.app/sitemap.xml
+
+Sitemap: https://www.boostech.in/sitemap.xml
