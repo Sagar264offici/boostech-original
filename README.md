@@ -52,4 +52,3 @@ The project uses your supplied demo/portfolio URLs. Project cards load the live 
 # Boostech
 # Boostech
 # boostech-original
-# boostech-original
